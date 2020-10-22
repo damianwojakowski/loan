@@ -52,4 +52,15 @@ class LoanApplicationTests {
         assertFalse(validator.isValid(loan));
     }
 
+    @Test
+    void GivenTheLoanAmountIsHigherThanMinimalLimit_CanTakeALoan() {
+        Amount minLimit = new Amount(5000);
+        Amount loanAmount = new Amount(10000);
+
+        validator.addRule(new MinLimit(minLimit));
+        loan.setAmount(loanAmount);
+
+        assertTrue(validator.isValid(loan));
+    }
+
 }
