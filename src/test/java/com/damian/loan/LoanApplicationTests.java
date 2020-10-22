@@ -1,6 +1,7 @@
 package com.damian.loan;
 
 import com.damian.loan.rules.MaxLimit;
+import com.damian.loan.rules.MinLimit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,21 +22,32 @@ class LoanApplicationTests {
     @Test
     void GivenTheLoanAmountIsLessThanMaxLimit_CanTakeALoan() {
         Amount maxLimit = new Amount(5000);
-        Amount amount = new Amount(1000);
+        Amount loanAmount = new Amount(1000);
 
         validator.addRule(new MaxLimit(maxLimit));
-        loan.setAmount(amount);
+        loan.setAmount(loanAmount);
 
         assertTrue(validator.isValid(loan));
     }
 
     @Test
-    void GivenTheLoanAmountIsHitherThanMaxLimit_CannotTakeALoan() {
+    void GivenTheLoanAmountIsHigherThanMaxLimit_CannotTakeALoan() {
         Amount maxLimit = new Amount(5000);
-        Amount amount = new Amount(10000);
+        Amount loanAmount = new Amount(10000);
 
         validator.addRule(new MaxLimit(maxLimit));
-        loan.setAmount(amount);
+        loan.setAmount(loanAmount);
+
+        assertFalse(validator.isValid(loan));
+    }
+
+    @Test
+    void GivenTheLoanAmountIsLowerThanMinimalLimit_CannotTakeALoan() {
+        Amount minLimit = new Amount(5000);
+        Amount loanAmount = new Amount(1000);
+
+        validator.addRule(new MinLimit(minLimit));
+        loan.setAmount(loanAmount);
 
         assertFalse(validator.isValid(loan));
     }

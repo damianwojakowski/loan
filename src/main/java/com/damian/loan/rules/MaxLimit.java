@@ -13,10 +13,6 @@ public class MaxLimit implements Rule {
 
     @Override
     public boolean isValida(Loan loan) {
-        if (loan.getAmount().getValue() > maxLimit.getValue()) {
-            return false;
-        } else {
-            return true;
-        }
+        return loan.getAmount().getValue() <= maxLimit.getValue();
     }
 }
