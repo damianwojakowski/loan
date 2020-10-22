@@ -11,7 +11,7 @@ public class LoanValidator {
 
     public boolean isValid(Loan loan) {
         for (Rule rule : rules) {
-            if (!rule.isValida(loan)) {
+            if (!rule.isValid(loan)) {
                 return false;
             };
         }

@@ -12,7 +12,7 @@ public class MinLimit implements Rule {
     }
 
     @Override
-    public boolean isValida(Loan loan) {
+    public boolean isValid(Loan loan) {
         return loan.getAmount().getValue() >= minLimit.getValue();
     }
 }

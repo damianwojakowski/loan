@@ -2,6 +2,7 @@ package com.damian.loan;
 
 import com.damian.loan.rules.MaxLimit;
 import com.damian.loan.rules.MinLimit;
+import com.damian.loan.rules.MinLoanPeriod;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -59,6 +60,28 @@ class LoanApplicationTests {
 
         validator.addRule(new MinLimit(minLimit));
         loan.setAmount(loanAmount);
+
+        assertTrue(validator.isValid(loan));
+    }
+
+    @Test
+    void GivenTheLoanPeriodIsShorterThanMinimalSetting_CannotTakeALoan() {
+        LoanPeriod minLimit = new LoanPeriod(12);
+        LoanPeriod chosenPeriod = new LoanPeriod(10);
+
+        validator.addRule(new MinLoanPeriod(minLimit));
+        loan.setLoanPeriod(chosenPeriod);
+
+        assertFalse(validator.isValid(loan));
+    }
+
+    @Test
+    void GivenTheLoanPeriodIsLongerOrEqualsMinimalSetting_CanTakeALoan() {
+        LoanPeriod minLimit = new LoanPeriod(12);
+        LoanPeriod chosenPeriod = new LoanPeriod(13);
+
+        validator.addRule(new MinLoanPeriod(minLimit));
+        loan.setLoanPeriod(chosenPeriod);
 
         assertTrue(validator.isValid(loan));
     }
