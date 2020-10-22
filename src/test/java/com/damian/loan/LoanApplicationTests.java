@@ -20,8 +20,8 @@ class LoanApplicationTests {
 
     @Test
     void GivenTheLoanAmountIsLessThanMaxLimit_CanTakeALoan() {
-        int maxLimit = 5000;
-        int amount = 1000;
+        Amount maxLimit = new Amount(5000);
+        Amount amount = new Amount(1000);
 
         validator.addRule(new MaxLimit(maxLimit));
         loan.setAmount(amount);
@@ -31,8 +31,8 @@ class LoanApplicationTests {
 
     @Test
     void GivenTheLoanAmountIsHitherThanMaxLimit_CannotTakeALoan() {
-        int maxLimit = 5000;
-        int amount = 10000;
+        Amount maxLimit = new Amount(5000);
+        Amount amount = new Amount(10000);
 
         validator.addRule(new MaxLimit(maxLimit));
         loan.setAmount(amount);

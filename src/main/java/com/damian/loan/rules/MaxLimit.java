@@ -1,18 +1,19 @@
 package com.damian.loan.rules;
 
+import com.damian.loan.Amount;
 import com.damian.loan.Loan;
 
 public class MaxLimit implements Rule {
 
-    private int maxLimit;
+    private Amount maxLimit;
 
-    public MaxLimit(int maxLimit) {
+    public MaxLimit(Amount maxLimit) {
         this.maxLimit = maxLimit;
     }
 
     @Override
     public boolean isValida(Loan loan) {
-        if (loan.getAmount() > maxLimit) {
+        if (loan.getAmount().getValue() > maxLimit.getValue()) {
             return false;
         } else {
             return true;

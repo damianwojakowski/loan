@@ -1,13 +1,13 @@
 package com.damian.loan;
 
 public class Loan {
-    private int amount;
+    private Amount amount;
 
-    public void setAmount(int amount) {
+    public void setAmount(Amount amount) {
         this.amount = amount;
     }
 
-    public int getAmount() {
+    public Amount getAmount() {
         return this.amount;
     }
 }
