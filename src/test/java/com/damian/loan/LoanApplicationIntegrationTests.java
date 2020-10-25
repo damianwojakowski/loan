@@ -2,7 +2,7 @@ package com.damian.loan;
 
 import com.damian.loan.attributes.Amount;
 import com.damian.loan.attributes.LoanPeriodInInstalments;
-import com.damian.loan.rules.LoanPeriod;
+import com.damian.loan.rules.LoanPeriodRules;
 import com.damian.loan.rules.MaxAmountLimit;
 import com.damian.loan.rules.MinAmountLimit;
 import org.junit.jupiter.api.BeforeEach;
@@ -70,7 +70,7 @@ class LoanApplicationIntegrationTests {
         LoanPeriodInInstalments max = new LoanPeriodInInstalments(60);
         LoanPeriodInInstalments chosenPeriod = new LoanPeriodInInstalments(3);
 
-        validator.addRule(new LoanPeriod(minLimit, max));
+        validator.addRule(new LoanPeriodRules(minLimit, max));
         loan.setLoanPeriod(chosenPeriod);
 
         assertFalse(validator.isValid(loan));
@@ -82,7 +82,7 @@ class LoanApplicationIntegrationTests {
         LoanPeriodInInstalments max = new LoanPeriodInInstalments(60);
         LoanPeriodInInstalments chosenPeriod = new LoanPeriodInInstalments(13);
 
-        validator.addRule(new LoanPeriod(minLimit, max));
+        validator.addRule(new LoanPeriodRules(minLimit, max));
         loan.setLoanPeriod(chosenPeriod);
 
         assertTrue(validator.isValid(loan));
@@ -94,7 +94,7 @@ class LoanApplicationIntegrationTests {
         LoanPeriodInInstalments max = new LoanPeriodInInstalments(60);
         LoanPeriodInInstalments chosenPeriod = new LoanPeriodInInstalments(6);
 
-        validator.addRule(new LoanPeriod(minLimit, max));
+        validator.addRule(new LoanPeriodRules(minLimit, max));
         loan.setLoanPeriod(chosenPeriod);
 
         assertTrue(validator.isValid(loan));
@@ -106,7 +106,7 @@ class LoanApplicationIntegrationTests {
         LoanPeriodInInstalments max = new LoanPeriodInInstalments(60);
         LoanPeriodInInstalments chosenPeriod = new LoanPeriodInInstalments(72);
 
-        validator.addRule(new LoanPeriod(min, max));
+        validator.addRule(new LoanPeriodRules(min, max));
         loan.setLoanPeriod(chosenPeriod);
 
         assertFalse(validator.isValid(loan));
@@ -118,7 +118,7 @@ class LoanApplicationIntegrationTests {
         LoanPeriodInInstalments max = new LoanPeriodInInstalments(60);
         LoanPeriodInInstalments chosenPeriod = new LoanPeriodInInstalments(24);
 
-        validator.addRule(new LoanPeriod(min, max));
+        validator.addRule(new LoanPeriodRules(min, max));
         loan.setLoanPeriod(chosenPeriod);
 
         assertTrue(validator.isValid(loan));
@@ -130,7 +130,7 @@ class LoanApplicationIntegrationTests {
         LoanPeriodInInstalments max = new LoanPeriodInInstalments(60);
         LoanPeriodInInstalments chosenPeriod = new LoanPeriodInInstalments(60);
 
-        validator.addRule(new LoanPeriod(min, max));
+        validator.addRule(new LoanPeriodRules(min, max));
         loan.setLoanPeriod(chosenPeriod);
 
         assertTrue(validator.isValid(loan));

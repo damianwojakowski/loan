@@ -3,12 +3,12 @@ package com.damian.loan.rules;
 import com.damian.loan.LoanApplication;
 import com.damian.loan.attributes.LoanPeriodInInstalments;
 
-public class LoanPeriod implements Rule {
+public class LoanPeriodRules implements Rule {
 
     LoanPeriodInInstalments minLimit;
     LoanPeriodInInstalments maxLimit;
 
-    public LoanPeriod(LoanPeriodInInstalments minLimit, LoanPeriodInInstalments maxLimit) {
+    public LoanPeriodRules(LoanPeriodInInstalments minLimit, LoanPeriodInInstalments maxLimit) {
         this.minLimit = minLimit;
         this.maxLimit = maxLimit;
     }
