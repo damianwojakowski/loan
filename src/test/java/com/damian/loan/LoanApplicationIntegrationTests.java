@@ -2,8 +2,8 @@ package com.damian.loan;
 
 import com.damian.loan.attributes.Amount;
 import com.damian.loan.attributes.LoanPeriodInInstalments;
-import com.damian.loan.rules.MaxLimit;
-import com.damian.loan.rules.MinLimit;
+import com.damian.loan.rules.MaxAmountLimit;
+import com.damian.loan.rules.MinAmountLimit;
 import com.damian.loan.rules.MinLoanPeriod;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ class LoanApplicationIntegrationTests {
         Amount maxLimit = new Amount(5000);
         Amount loanAmount = new Amount(1000);
 
-        validator.addRule(new MaxLimit(maxLimit));
+        validator.addRule(new MaxAmountLimit(maxLimit));
         loan.setAmount(loanAmount);
 
         assertTrue(validator.isValid(loan));
@@ -36,7 +36,7 @@ class LoanApplicationIntegrationTests {
         Amount maxLimit = new Amount(5000);
         Amount loanAmount = new Amount(10000);
 
-        validator.addRule(new MaxLimit(maxLimit));
+        validator.addRule(new MaxAmountLimit(maxLimit));
         loan.setAmount(loanAmount);
 
         assertFalse(validator.isValid(loan));
@@ -47,7 +47,7 @@ class LoanApplicationIntegrationTests {
         Amount minLimit = new Amount(5000);
         Amount loanAmount = new Amount(1000);
 
-        validator.addRule(new MinLimit(minLimit));
+        validator.addRule(new MinAmountLimit(minLimit));
         loan.setAmount(loanAmount);
 
         assertFalse(validator.isValid(loan));
@@ -58,7 +58,7 @@ class LoanApplicationIntegrationTests {
         Amount minLimit = new Amount(5000);
         Amount loanAmount = new Amount(10000);
 
-        validator.addRule(new MinLimit(minLimit));
+        validator.addRule(new MinAmountLimit(minLimit));
         loan.setAmount(loanAmount);
 
         assertTrue(validator.isValid(loan));

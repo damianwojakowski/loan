@@ -3,11 +3,11 @@ package com.damian.loan.rules;
 import com.damian.loan.attributes.Amount;
 import com.damian.loan.LoanApplication;
 
-public class MaxLimit implements Rule {
+public class MaxAmountLimit implements Rule {
 
     private Amount maxLimit;
 
-    public MaxLimit(Amount maxLimit) {
+    public MaxAmountLimit(Amount maxLimit) {
         this.maxLimit = maxLimit;
     }
 

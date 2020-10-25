@@ -3,11 +3,11 @@ package com.damian.loan.rules;
 import com.damian.loan.attributes.Amount;
 import com.damian.loan.LoanApplication;
 
-public class MinLimit implements Rule {
+public class MinAmountLimit implements Rule {
 
     private Amount minLimit;
 
-    public MinLimit(Amount minLimit) {
+    public MinAmountLimit(Amount minLimit) {
         this.minLimit = minLimit;
     }
 
