@@ -1,11 +1,11 @@
 package com.damian.loan;
 
 import com.damian.loan.attributes.Amount;
-import com.damian.loan.attributes.LoanPeriod;
+import com.damian.loan.attributes.LoanPeriodInInstalments;
 
 public class LoanApplication {
     private Amount amount;
-    private LoanPeriod loanPeriod;
+    private LoanPeriodInInstalments loanPeriod;
 
     public void setAmount(Amount amount) {
         this.amount = amount;
@@ -15,11 +15,11 @@ public class LoanApplication {
         return this.amount;
     }
 
-    public void setLoanPeriod(LoanPeriod loanPeriod) {
+    public void setLoanPeriod(LoanPeriodInInstalments loanPeriod) {
         this.loanPeriod = loanPeriod;
     }
 
-    public LoanPeriod getLoanPeriod() {
+    public LoanPeriodInInstalments getLoanPeriod() {
         return this.loanPeriod;
     }
 }

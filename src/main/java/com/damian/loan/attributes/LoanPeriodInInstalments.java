@@ -1,10 +1,10 @@
 package com.damian.loan.attributes;
 
-public class LoanPeriod {
+public class LoanPeriodInInstalments {
 
     int period;
 
-    public LoanPeriod(int period) {
+    public LoanPeriodInInstalments(int period) {
         this.period = period;
     }
 

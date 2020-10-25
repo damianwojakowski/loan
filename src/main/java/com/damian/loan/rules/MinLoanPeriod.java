@@ -1,13 +1,13 @@
 package com.damian.loan.rules;
 
 import com.damian.loan.LoanApplication;
-import com.damian.loan.attributes.LoanPeriod;
+import com.damian.loan.attributes.LoanPeriodInInstalments;
 
 public class MinLoanPeriod implements Rule {
 
-    LoanPeriod minLimit;
+    LoanPeriodInInstalments minLimit;
 
-    public MinLoanPeriod(LoanPeriod minLimit) {
+    public MinLoanPeriod(LoanPeriodInInstalments minLimit) {
         this.minLimit = minLimit;
     }
 

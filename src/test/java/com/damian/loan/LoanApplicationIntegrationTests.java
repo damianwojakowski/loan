@@ -1,7 +1,7 @@
 package com.damian.loan;
 
 import com.damian.loan.attributes.Amount;
-import com.damian.loan.attributes.LoanPeriod;
+import com.damian.loan.attributes.LoanPeriodInInstalments;
 import com.damian.loan.rules.MaxLimit;
 import com.damian.loan.rules.MinLimit;
 import com.damian.loan.rules.MinLoanPeriod;
@@ -66,8 +66,8 @@ class LoanApplicationIntegrationTests {
 
     @Test
     void GivenTheLoanPeriodIsShorterThanMinimalSetting_CannotTakeALoan() {
-        LoanPeriod minLimit = new LoanPeriod(12);
-        LoanPeriod chosenPeriod = new LoanPeriod(10);
+        LoanPeriodInInstalments minLimit = new LoanPeriodInInstalments(12);
+        LoanPeriodInInstalments chosenPeriod = new LoanPeriodInInstalments(10);
 
         validator.addRule(new MinLoanPeriod(minLimit));
         loan.setLoanPeriod(chosenPeriod);
@@ -77,8 +77,8 @@ class LoanApplicationIntegrationTests {
 
     @Test
     void GivenTheLoanPeriodIsLongerOrEqualsMinimalSetting_CanTakeALoan() {
-        LoanPeriod minLimit = new LoanPeriod(12);
-        LoanPeriod chosenPeriod = new LoanPeriod(13);
+        LoanPeriodInInstalments minLimit = new LoanPeriodInInstalments(12);
+        LoanPeriodInInstalments chosenPeriod = new LoanPeriodInInstalments(13);
 
         validator.addRule(new MinLoanPeriod(minLimit));
         loan.setLoanPeriod(chosenPeriod);
