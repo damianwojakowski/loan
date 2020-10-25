@@ -2,13 +2,13 @@ package com.damian.loan.attributes;
 
 public class LoanPeriodInInstalments {
 
-    int period;
+    long period;
 
-    public LoanPeriodInInstalments(int period) {
+    public LoanPeriodInInstalments(long period) {
         this.period = period;
     }
 
-    public int getValue() {
+    public long getValue() {
         return this.period;
     }
 

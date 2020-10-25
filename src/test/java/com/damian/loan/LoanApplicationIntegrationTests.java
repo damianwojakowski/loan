@@ -163,4 +163,6 @@ class LoanApplicationIntegrationTests {
         assertTrue(validator.isValid(loan));
     }
 
+
+
 }

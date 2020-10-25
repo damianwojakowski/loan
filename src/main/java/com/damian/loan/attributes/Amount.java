@@ -2,13 +2,13 @@ package com.damian.loan.attributes;
 
 public class Amount {
 
-    int value;
+    long value;
 
-    public Amount(int value) {
+    public Amount(long value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public long getValue() {
         return this.value;
     }
 }
