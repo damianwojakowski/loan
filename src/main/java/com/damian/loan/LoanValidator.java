@@ -5,7 +5,7 @@ import com.damian.loan.rules.Rule;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoanValidator {
+public class LoanValidator implements Validator {
 
     List<Rule> rules = new ArrayList<Rule>();
 

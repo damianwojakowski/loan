@@ -5,30 +5,26 @@ import com.damian.loan.LoanValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class LoanServiceTest {
 
-//    LoanService loanService;
+    LoanService loanService;
 
-//    @BeforeEach
-//    void setUp() {
-//        loanService = new LoanService();
-//    }
+    @BeforeEach
+    void setUp() {
+        loanService = new LoanService();
+        LoanValidator loanValidator = new LoanValidator();
+
+        loanService.setLoanValidator(loanValidator);
+    }
 
     @Test
     void GivenLoanData_CanApplyLoanApplications() {
         LoanService loanService = new LoanService();
-        LoanApplication loanApplication = new LoanApplication();
-        LoanValidator loanValidator = new LoanValidator();
 
-        loanService.setLoanApplication();
-        loanService.setLoanValidator();
-
-        long loanId = 1;
         int period = 12;
         long amount = 10000;
 
-        loanService.applyForLoan(loanId, period, amount);
+        LoanApplication loanApplication = loanService.createLoanApplicaton(period, amount);
+        loanService.apply(loanApplication);
     }
 }

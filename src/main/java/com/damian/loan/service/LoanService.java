@@ -1,12 +1,30 @@
 package com.damian.loan.service;
 
+import com.damian.loan.LoanApplication;
+import com.damian.loan.Validator;
+import com.damian.loan.attributes.Amount;
+import com.damian.loan.attributes.LoanPeriodInInstalments;
+
 public class LoanService {
-    public void setLoanApplication() {
+    Validator loanValidator;
+
+    public void setLoanValidator(Validator loanValidator) {
+        this.loanValidator = loanValidator;
     }
 
-    public void setLoanValidator() {
+    public LoanApplication createLoanApplicaton(int period, long amount) {
+        LoanApplication loanApplication = new LoanApplication();
+        loanApplication.setAmount(new Amount(amount));
+        loanApplication.setLoanPeriod(new LoanPeriodInInstalments(period));
+
+        return loanApplication;
     }
 
-    public void applyForLoan(long loanId, int period, long amount) {
+    public boolean apply(LoanApplication loanApplication) {
+        if (this.loanValidator.isValid(loanApplication)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
