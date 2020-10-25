@@ -5,17 +5,15 @@ import com.damian.loan.rules.MinLimit;
 import com.damian.loan.rules.MinLoanPeriod;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-class LoanApplicationTests {
+class LoanIntegrationTests {
 
     Loan loan;
     LoanValidator validator;
 
     @BeforeEach
-    void init() {
+    void setUp() {
         loan = new Loan();
         validator = new LoanValidator();
     }
