@@ -4,8 +4,12 @@ import com.damian.loan.attributes.Amount;
 import com.damian.loan.attributes.LoanPeriodInInstalments;
 import com.damian.loan.rules.LoanPeriodLimits;
 import com.damian.loan.rules.AmountLimits;
+import com.damian.loan.rules.OvernightLimits;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LoanApplicationIntegrationTests {
@@ -159,6 +163,45 @@ class LoanApplicationIntegrationTests {
 
         validator.addRule(new LoanPeriodLimits(min, max));
         loan.setLoanPeriod(chosenPeriod);
+
+        assertTrue(validator.isValid(loan));
+    }
+
+    @Test
+    void GivenTheLoanAmountEqualsMaximalAndIsOvernight_CannotTakeALoan() {
+        Amount max = new Amount(20000);
+        // 2020/1/1 - 02:30 AM
+        LocalDateTime creationTime = LocalDateTime.of(2020, 1, 1, 2, 30);
+
+        validator.addRule(new OvernightLimits(max));
+        loan.setCreationTime(creationTime);
+        loan.setAmount(new Amount(20000));
+
+        assertFalse(validator.isValid(loan));
+    }
+
+    @Test
+    void GivenTheLoanAmountIsLessThanMaximalAndIsOvernight_CanTakeALoan() {
+        Amount max = new Amount(20000);
+        // 2020/1/1 - 02:30 AM
+        LocalDateTime creationTime = LocalDateTime.of(2020, 1, 1, 2, 30);
+
+        validator.addRule(new OvernightLimits(max));
+        loan.setCreationTime(creationTime);
+        loan.setAmount(new Amount(15000));
+
+        assertTrue(validator.isValid(loan));
+    }
+
+    @Test
+    void GivenTheLoanAmountIsMaximalAndIsNotOvernight_CanTakeALoan() {
+        Amount max = new Amount(20000);
+        // 2020/1/1 - 10:30 AM
+        LocalDateTime creationTime = LocalDateTime.of(2020, 1, 1, 10, 30);
+
+        validator.addRule(new OvernightLimits(max));
+        loan.setCreationTime(creationTime);
+        loan.setAmount(new Amount(15000));
 
         assertTrue(validator.isValid(loan));
     }

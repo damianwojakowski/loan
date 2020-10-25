@@ -5,6 +5,8 @@ import com.damian.loan.Validator;
 import com.damian.loan.attributes.Amount;
 import com.damian.loan.attributes.LoanPeriodInInstalments;
 
+import java.time.LocalDateTime;
+
 public class LoanService {
     Validator loanValidator;
 
@@ -16,6 +18,7 @@ public class LoanService {
         LoanApplication loanApplication = new LoanApplication();
         loanApplication.setAmount(new Amount(amount));
         loanApplication.setLoanPeriod(new LoanPeriodInInstalments(period));
+        loanApplication.setCreationTime(LocalDateTime.now());
 
         return loanApplication;
     }
