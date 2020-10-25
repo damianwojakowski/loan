@@ -9,7 +9,7 @@ public class LoanValidator {
 
     List<Rule> rules = new ArrayList<Rule>();
 
-    public boolean isValid(Loan loan) {
+    public boolean isValid(LoanApplication loan) {
         for (Rule rule : rules) {
             if (!rule.isValid(loan)) {
                 return false;

@@ -1,5 +1,7 @@
 package com.damian.loan;
 
+import com.damian.loan.attributes.Amount;
+import com.damian.loan.attributes.LoanPeriod;
 import com.damian.loan.rules.MaxLimit;
 import com.damian.loan.rules.MinLimit;
 import com.damian.loan.rules.MinLoanPeriod;
@@ -7,14 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class LoanIntegrationTests {
+class LoanApplicationIntegrationTests {
 
-    Loan loan;
+    LoanApplication loan;
     LoanValidator validator;
 
     @BeforeEach
     void setUp() {
-        loan = new Loan();
+        loan = new LoanApplication();
         validator = new LoanValidator();
     }
 

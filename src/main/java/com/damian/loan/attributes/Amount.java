@@ -1,4 +1,4 @@
-package com.damian.loan;
+package com.damian.loan.attributes;
 
 public class Amount {
 

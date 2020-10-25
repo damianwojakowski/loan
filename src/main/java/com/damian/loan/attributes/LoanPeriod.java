@@ -1,10 +1,10 @@
-package com.damian.loan;
+package com.damian.loan.attributes;
 
 public class LoanPeriod {
 
     int period;
 
-    LoanPeriod(int period) {
+    public LoanPeriod(int period) {
         this.period = period;
     }
 

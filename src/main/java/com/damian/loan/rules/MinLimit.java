@@ -1,7 +1,7 @@
 package com.damian.loan.rules;
 
-import com.damian.loan.Amount;
-import com.damian.loan.Loan;
+import com.damian.loan.attributes.Amount;
+import com.damian.loan.LoanApplication;
 
 public class MinLimit implements Rule {
 
@@ -12,7 +12,7 @@ public class MinLimit implements Rule {
     }
 
     @Override
-    public boolean isValid(Loan loan) {
+    public boolean isValid(LoanApplication loan) {
         return loan.getAmount().getValue() >= minLimit.getValue();
     }
 }
