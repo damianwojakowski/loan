@@ -7,6 +7,7 @@ public class LoanDaoImpl implements LoanDao {
     private Long amount;
     private int period;
     private LocalDateTime createdAt;
+    private boolean isPeriodExtended;
 
     public Long getId() {
         return id;
