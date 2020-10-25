@@ -39,6 +39,10 @@ public class LoanService {
     }
 
     private void proceedWithLoanApplication(LoanApplication loanApplication) {
-
+        loanRepository.save(
+                loanApplication.getAmount().getValue(),
+                loanApplication.getLoanPeriod().getValue(),
+                loanApplication.getCreationDate()
+        );
     }
 }
