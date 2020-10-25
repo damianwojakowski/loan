@@ -24,7 +24,7 @@ public class LoanService {
     }
 
     public boolean apply(LoanApplication loanApplication) {
-        if (this.loanValidator.isValid(loanApplication)) {
+        if (loanValidator.isValid(loanApplication)) {
             return true;
         } else {
             return false;

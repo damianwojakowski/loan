@@ -22,8 +22,6 @@ class LoanServiceTest {
 
     @Test
     void GivenLoanData_CanApplyLoanApplications() {
-        LoanService loanService = new LoanService();
-
         int period = 12;
         long amount = 10000;
 
