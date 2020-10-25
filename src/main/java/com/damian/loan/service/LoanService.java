@@ -12,7 +12,7 @@ public class LoanService {
         this.loanValidator = loanValidator;
     }
 
-    public LoanApplication createLoanApplicaton(int period, long amount) {
+    public LoanApplication createLoanApplication(int period, long amount) {
         LoanApplication loanApplication = new LoanApplication();
         loanApplication.setAmount(new Amount(amount));
         loanApplication.setLoanPeriod(new LoanPeriodInInstalments(period));

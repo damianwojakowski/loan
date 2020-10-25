@@ -24,7 +24,7 @@ class LoanServiceTest {
         int period = 12;
         long amount = 10000;
 
-        LoanApplication loanApplication = loanService.createLoanApplicaton(period, amount);
+        LoanApplication loanApplication = loanService.createLoanApplication(period, amount);
         loanService.apply(loanApplication);
     }
 }
