@@ -4,13 +4,15 @@ import com.damian.loan.LoanApplication;
 import com.damian.loan.LoanValidator;
 import com.damian.loan.attributes.Amount;
 import com.damian.loan.attributes.LoanPeriodInInstalments;
+import com.damian.loan.repository.InMemoryLoanRepository;
+import com.damian.loan.repository.LoanRepository;
 import com.damian.loan.rules.AmountLimits;
 import com.damian.loan.rules.LoanPeriodLimits;
 import com.damian.loan.rules.OvernightLimits;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LoanServiceTest {
+class LoanServiceIntegrationTest {
 
     LoanService loanService;
 
@@ -18,6 +20,7 @@ class LoanServiceTest {
     void setUp() {
         loanService = new LoanService();
         loanService.setLoanValidator(setUpValidator());
+        loanService.setLoanRepository(setUpLoanRepository());
     }
 
     @Test
@@ -36,5 +39,9 @@ class LoanServiceTest {
         loanValidator.addRule(new OvernightLimits(new Amount(1000)));
 
         return loanValidator;
+    }
+
+    private LoanRepository setUpLoanRepository() {
+        return new InMemoryLoanRepository();
     }
 }

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LoanApplicationIntegrationTests {
+class LoanApplicationIntegrationTest {
 
     LoanApplication loan;
     LoanValidator validator;
